@@ -43,7 +43,19 @@ class FeedViewController: UIViewController, UINavigationControllerDelegate, UIIm
         
         
         // grab image
-        imageView = UIImageView(image: UIImage(named: "home_feed"))
+        
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let user = defaults.objectForKey("user") as! String
+        
+        // if the key returns "new user", then...
+        if user == "new user" {
+            imageView = UIImageView(image: UIImage(named: "empty_feed"))
+        } else {
+            imageView = UIImageView(image: UIImage(named: "home_feed"))
+        }
+        
+//        imageView = UIImageView(image: UIImage(named: "home_feed"))
         navView = UIImageView(image: UIImage(named: "nav"))
         composeView = UIImageView(image: UIImage(named: "compose"))
     

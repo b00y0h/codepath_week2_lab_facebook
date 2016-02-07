@@ -88,7 +88,16 @@ class LoginViewController: UIViewController {
     }
     
     func validateCredentials() {
+        
         if userNameTextField.text == "Adey" && passwordTextField.text == "rocks!" {
+
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject("existing user", forKey: "user")
+
+            performSegueWithIdentifier("loginSeque", sender: self)
+        } else if userNameTextField.text == "newUser" {
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject("new user", forKey: "user")
             performSegueWithIdentifier("loginSeque", sender: self)
         } else {
             showAlert()
